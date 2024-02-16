@@ -1,3 +1,5 @@
+import { keyCodes } from './keyCodes.js';
+
 const buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 let oldValue = 0;
@@ -10,11 +12,16 @@ buttons.forEach(button => {
   button.addEventListener('click', handleClick);
 });
 
-document.addEventListener('keyup', (e) => {
-    if (e.code === "ArrowUp")        playerSpriteX += 10
-    else if (e.code === "ArrowDown") playerSpriteX -= 10
-  
-    document.getElementById('test').innerHTML = 'playerSpriteX = ' + playerSpriteX;
+document.addEventListener('keydown', (e) => {
+    e.preventDefault();
+
+    const button = document.getElementById(keyCodes[e.code]);
+
+    console.log(e.code, keyCodes[e.code], button);
+
+    if (button) {
+        button.click();
+    }
   });
 
 function handleClick(e) {
@@ -137,38 +144,4 @@ function operate(number1, number2, operator) {
 
 function updateDisplay(value) {
     display.innerText = value;
-}
-
-const keyCodes = {
-    "Backspace": "button-back",
-    "Enter": "button-equal",
-    "Digit0": "button-zero",
-    "Digit1": "button-one",
-    "Digit2": "button-two",
-    "Digit3": "button-three",
-    "Digit4": "button-four",
-    "Digit5": "button-five",
-    "Digit6": "button-six",
-    "Digit7": "button-seven",
-    "Digit8": "button-eight",
-    "Digit9": "button-nine",
-    "Numpad0": "button-zero",
-    "Numpad1": "button-one",
-    "Numpad2": "button-two",
-    "Numpad3": "button-three",
-    "Numpad4": "button-four",
-    "Numpad5": "button-five",
-    "Numpad6": "button-six",
-    "Numpad7": "button-seven",
-    "Numpad8": "button-eight",
-    "Numpad9": "button-nine",
-    "NumpadMultiply": "button-multiply",
-    "NumpadAdd": "button-add",
-    "NumpadSubtract": "button-subtract",
-    "NumpadDivide": "button-divide",
-    "NumpadDecimal": "button-dot",
-    "Equal": "button-equal",
-    "Minus": "button-subtract",
-    "Period": "button-dot",
-    "Slash": "button-divide",
 }
