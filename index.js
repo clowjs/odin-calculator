@@ -17,8 +17,6 @@ document.addEventListener('keydown', (e) => {
 
     const button = document.getElementById(keyCodes[e.code]);
 
-    console.log(e.code, keyCodes[e.code], button);
-
     if (button) {
         button.click();
     }
