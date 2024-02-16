@@ -70,6 +70,10 @@ body {
     background-color: #777677;
 }
 
+.button-divide {
+    flex: 0 0 24.7%;
+}
+
 .button-zero {
     flex: 1 0 45.1%;
 }
